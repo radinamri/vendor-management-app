@@ -1,0 +1,46 @@
+/**
+ * @file globals.css
+ * @description Establishes the application's global styling foundation and theming.
+ *
+ * This file is the entry point for all global styles. It's responsible for:
+ * 1.  **Integrating Tailwind CSS:** The `@import "tailwindcss"` directive (or standard
+ * `@tailwind` directives) pulls in the entire utility-first framework.
+ *
+ * 2.  **Theme Definition:** It defines a light/dark theme using CSS custom
+ * properties (`--background`, `--foreground`). The dark theme is automatically
+ * applied based on the user's OS preference via the `prefers-color-scheme`
+ * media query.
+ *
+ * 3.  **Base Styling:** It applies the theme variables to the `<body>` tag,
+ * ensuring all components inherit a consistent base look and feel.
+ *
+ * Any styles intended to be available application-wide, such as custom link
+ * styles or overrides that aren't suitable for utility classes, should be
+ * defined here.
+ */
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
